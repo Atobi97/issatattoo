@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issa Tattoo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    background-color: #111;
+    color: #f5f5f5;
+    line-height: 1.6;
+  }
+  
+  header {
+    background: #000;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  nav a {
+    color: #f5f5f5;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  nav a:hover {
+    color: #e94560;
+  }
+  
+  .hero {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #e94560;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    color: #ccc;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid #333;
+    margin-top: 4rem;
+    font-size: 0.9rem;
+    color: #888;
+  }
+  
