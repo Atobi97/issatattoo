@@ -931,12 +931,14 @@
                 from_email: document.getElementById('email').value,
                 reply_to: document.getElementById('email').value,
                 email: document.getElementById('email').value,
+                to_name: document.getElementById('name').value,
+                to_email: document.getElementById('email').value,  // Send confirmation to guest's email
                 phone: document.getElementById('phone').value,
                 service: document.getElementById('service').value,
                 artist: document.getElementById('artist').value,
                 date: document.getElementById('date').value,
                 message: document.getElementById('description').value,
-                to_email: 'issatattoosalon@gmail.com'
+                salon_email: 'issatattoosalon@gmail.com'  // Your salon's email for reference
             };
 
             // Send the email using EmailJS
