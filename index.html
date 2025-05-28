@@ -932,19 +932,26 @@
                 reply_to: document.getElementById('email').value,
                 email: document.getElementById('email').value,
                 to_name: document.getElementById('name').value,
-                to_email: document.getElementById('email').value,  // Send confirmation to guest's email
+                to_email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 service: document.getElementById('service').value,
                 artist: document.getElementById('artist').value,
                 date: document.getElementById('date').value,
-                message: document.getElementById('description').value,
-                salon_email: 'issatattoosalon@gmail.com'  // Your salon's email for reference
+                message: document.getElementById('description').value
             };
 
-            // Send the email using EmailJS
+            // Send confirmation email to guest
             emailjs.send('service_pu4lycm', 'template_uz204d6', formData)
                 .then(function() {
-                    // Success message
+                    // After guest confirmation is sent, send notification to salon
+                    const salonData = {
+                        ...formData,
+                        to_email: 'issatattoosalon@gmail.com'  // Override to_email for salon notification
+                    };
+                    return emailjs.send('service_pu4lycm', 'template_0n460rc', salonData);  // Salon notification template
+                })
+                .then(function() {
+                    // Success message after both emails are sent
                     alert(currentLang === 'en' 
                         ? 'Your booking request has been sent successfully! We will contact you soon.'
                         : 'Foglalási kérelmét sikeresen elküldtük! Hamarosan kapcsolatba lépünk Önnel.');
