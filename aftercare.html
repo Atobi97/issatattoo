@@ -274,10 +274,12 @@
 
     <script>
         // Language switching functionality
-        let currentLang = 'en';
+        let currentLang = localStorage.getItem('selectedLanguage') || 'en';
 
         function switchLanguage(lang) {
             currentLang = lang;
+            localStorage.setItem('selectedLanguage', lang);
+            
             document.querySelectorAll('[data-en]').forEach(element => {
                 element.textContent = element.getAttribute(`data-${lang}`);
             });
@@ -304,6 +306,9 @@
                 switchLanguage(lang);
             });
         });
+
+        // Initialize the page with the stored language
+        switchLanguage(currentLang);
     </script>
 </body>
 </html> 
