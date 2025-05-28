@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issa Tattoo - Piercing Prices</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        header {
+            background-color: #000000;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 120px;
+            width: auto;
+        }
+
+        nav {
+            padding: 15px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .price-section {
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #808080;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .price-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-btn {
+            background: #ffffff;
+            color: black;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .language-btn:hover {
+            background: #e6e6e6;
+        }
+
+        .language-btn.active {
+            background: #cccccc;
+        }
+
+        @media (max-width: 768px) {
+            .language-switcher {
+                position: relative;
+                top: 0;
+                right: 0;
+                text-align: center;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button class="language-btn active" data-lang="en">EN</button>
+        <button class="language-btn" data-lang="hu">HU</button>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Issa Tattoo Logo">
+        </div>
+        <nav>
+            <a href="index.html" data-en="Home" data-hu="Főoldal">Home</a>
+            <a href="index.html#artists" data-en="Artists" data-hu="Művészek">Artists</a>
+            <a href="index.html#services" data-en="Services" data-hu="Szolgáltatások">Services</a>
+            <a href="index.html#contact" data-en="Contact" data-hu="Kapcsolat">Contact</a>
+            <a href="aftercare.html" data-en="Aftercare" data-hu="Utókezelés">Aftercare</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <h1 class="section-title" data-en="Piercing Prices" data-hu="Piercing Árak">Piercing Prices</h1>
+        
+        <div class="price-section" data-lang="hu" style="display: none;">
+            <img src="images/pchun.png" alt="Piercing árlista" class="price-image">
+        </div>
+
+        <div class="price-section" data-lang="en">
+            <img src="images/pceng.png" alt="Piercing price list" class="price-image">
+        </div>
+    </main>
+
+    <script>
+        // Language switching functionality
+        let currentLang = 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-en]').forEach(element => {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            });
+
+            // Show/hide language-specific content
+            document.querySelectorAll('[data-lang]').forEach(section => {
+                if (section.getAttribute('data-lang') === lang) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            // Update active state of language buttons
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // Add click handlers to language buttons
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                switchLanguage(lang);
+            });
+        });
+    </script>
+</body>
+</html> 
