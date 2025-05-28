@@ -452,9 +452,50 @@
             margin-bottom: 20px;
             font-size: 2em;
         }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        .cookie-banner button {
+            background: #ffffff;
+            color: black;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .cookie-banner button:hover {
+            background: #e6e6e6;
+        }
     </style>
 </head>
 <body>
+    <div class="cookie-banner" id="cookieBanner">
+        <span data-en="We use cookies to remember your language preference." 
+              data-hu="Cookie-kat használunk a nyelvi beállítások megjegyzéséhez.">
+            We use cookies to remember your language preference.
+        </span>
+        <button onclick="acceptCookies()" data-en="Accept" data-hu="Elfogad">Accept</button>
+    </div>
+
     <div class="language-switcher">
         <button class="language-btn active" data-lang="en">EN</button>
         <button class="language-btn" data-lang="hu">HU</button>
@@ -917,12 +958,44 @@
                 });
         });
 
+        // Cookie handling functions
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function acceptCookies() {
+            setCookie('cookieConsent', 'accepted', 365);
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // Check if user has accepted cookies
+        if (!getCookie('cookieConsent')) {
+            document.getElementById('cookieBanner').classList.add('show');
+        }
+
         // Language switching functionality
-        let currentLang = localStorage.getItem('selectedLanguage') || 'en';
+        let currentLang = getCookie('selectedLanguage') || 'en';
 
         function switchLanguage(lang) {
             currentLang = lang;
-            localStorage.setItem('selectedLanguage', lang);
+            setCookie('selectedLanguage', lang, 365);
             
             document.querySelectorAll('[data-en]').forEach(element => {
                 element.textContent = element.getAttribute(`data-${lang}`);
