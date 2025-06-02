@@ -496,6 +496,26 @@
         .cookie-banner button:hover {
             background: #e6e6e6;
         }
+
+        /* Add specific styles for portfolio images */
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background-color: #333; /* Visible background while loading */
+        }
+        
+        /* Add loading state */
+        .portfolio-item img:not([src]), 
+        .portfolio-item img[src=""] {
+            opacity: 0;
+        }
+        
+        .portfolio-item img[src] {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
     </style>
 </head>
 <body>
@@ -670,16 +690,16 @@
                 </div>
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                        <img src="images/stika/IMG_4444.PNG" alt="Stika's work 1">
+                        <img src="images/stika/IMG_4444.png" alt="Stika's work 1" onerror="this.src='images/stika/IMG_4444.PNG'">
                     </div>
                     <div class="portfolio-item">
-                        <img src="images/stika/IMG_3510.PNG" alt="Stika's work 2">
+                        <img src="images/stika/IMG_3510.png" alt="Stika's work 2" onerror="this.src='images/stika/IMG_3510.PNG'">
                     </div>
                     <div class="portfolio-item">
-                        <img src="images/stika/IMG_3033.PNG" alt="Stika's work 3">
+                        <img src="images/stika/IMG_3033.png" alt="Stika's work 3" onerror="this.src='images/stika/IMG_3033.PNG'">
                     </div>
                     <div class="portfolio-item">
-                        <img src="images/stika/IMG_4470.PNG" alt="Stika's work 4">
+                        <img src="images/stika/IMG_4470.png" alt="Stika's work 4" onerror="this.src='images/stika/IMG_4470.PNG'">
                     </div>
                     <div class="portfolio-item">
                         <img src="images/stika/IMG_9913.jpg" alt="Stika's work 5">
