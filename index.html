@@ -318,11 +318,24 @@
             background-color: #333;
             padding: 20px;
             border-radius: 8px;
+        }
+
+        .service-category:first-child .service-item {  /* This targets only tattoo services */
+            cursor: pointer;
             transition: transform 0.3s;
         }
 
-        .service-item:hover {
+        .service-category:first-child .service-item:hover {
             transform: translateY(-5px);
+        }
+
+        .service-category:last-child .service-item {  /* This targets piercing services */
+            cursor: default;
+            transition: none;
+        }
+
+        .service-category:last-child .service-item:hover {
+            transform: none;
         }
 
         .service-item h4 {
