@@ -516,6 +516,57 @@
             opacity: 1;
             transition: opacity 0.3s;
         }
+
+        /* Add these styles for the dropdown menu */
+        .services-dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .services-dropdown-btn {
+            background-color: #2a2a2a;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            font-size: 1.2em;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .services-dropdown-btn:after {
+            content: '▼';
+            margin-left: 10px;
+        }
+
+        .services-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #2a2a2a;
+            width: 100%;
+            z-index: 1;
+            border-radius: 0 0 10px 10px;
+            margin-top: 5px;
+        }
+
+        .services-dropdown-content.show {
+            display: block;
+        }
+
+        .services-dropdown-content .service-category {
+            padding: 20px;
+            border-bottom: 1px solid #3a3a3a;
+        }
+
+        .services-dropdown-content .service-category:last-child {
+            border-bottom: none;
+        }
     </style>
 </head>
 <body>
@@ -557,92 +608,97 @@
     <main class="main-content">
         <section id="services">
             <h2 class="section-title" data-en="Our Services" data-hu="Szolgáltatásaink">Our Services</h2>
-            <div class="services-container">
-                <div class="service-category">
-                    <h3 data-en="Tattoos" data-hu="Tetoválások">Tattoos</h3>
-                    <div class="service-list">
-                        <div class="service-item" data-service="custom-designs">
-                            <h4 data-en="Custom Designs" data-hu="Egyedi Tervezés">Custom Designs</h4>
-                            <p data-en="Unique tattoos tailored to your vision. Work with our artists to create your perfect design." 
-                               data-hu="Egyedi tetoválások az Ön elképzelései szerint. Művészeinkkel közösen megalkothatja a tökéletes designt.">
-                                Unique tattoos tailored to your vision. Work with our artists to create your perfect design.
-                            </p>
+            <div class="services-dropdown">
+                <button class="services-dropdown-btn" data-en="Click to view services" data-hu="Kattintson a szolgáltatások megtekintéséhez">Click to view services</button>
+                <div class="services-dropdown-content">
+                    <div class="services-container">
+                        <div class="service-category">
+                            <h3 data-en="Tattoos" data-hu="Tetoválások">Tattoos</h3>
+                            <div class="service-list">
+                                <div class="service-item" data-service="custom-designs">
+                                    <h4 data-en="Custom Designs" data-hu="Egyedi Tervezés">Custom Designs</h4>
+                                    <p data-en="Unique tattoos tailored to your vision. Work with our artists to create your perfect design." 
+                                       data-hu="Egyedi tetoválások az Ön elképzelései szerint. Művészeinkkel közösen megalkothatja a tökéletes designt.">
+                                        Unique tattoos tailored to your vision. Work with our artists to create your perfect design.
+                                    </p>
+                                </div>
+                                <div class="service-item" data-service="traditional">
+                                    <h4 data-en="Traditional" data-hu="Tradicionális">Traditional</h4>
+                                    <p data-en="Classic American and old-school designs with bold lines and vibrant colors." 
+                                       data-hu="Klasszikus amerikai és old-school minták erős vonalakkal és élénk színekkel.">
+                                        Classic American and old-school designs with bold lines and vibrant colors.
+                                    </p>
+                                </div>
+                                <div class="service-item" data-service="japanese">
+                                    <h4 data-en="Japanese Style" data-hu="Japán Stílus">Japanese Style</h4>
+                                    <p data-en="Traditional and modern Japanese designs, from small pieces to full body suits." 
+                                       data-hu="Tradicionális és modern japán minták, kis tetoválástól a teljes testtetoválásig.">
+                                        Traditional and modern Japanese designs, from small pieces to full body suits.
+                                    </p>
+                                </div>
+                                <div class="service-item" data-service="coverups">
+                                    <h4 data-en="Cover-Ups" data-hu="Átfedések">Cover-Ups</h4>
+                                    <p data-en="Transform or cover existing tattoos with new designs." 
+                                       data-hu="Régi tetoválások átalakítása vagy elfedése új mintákkal.">
+                                        Transform or cover existing tattoos with new designs.
+                                    </p>
+                                </div>
+                                <div class="service-item" data-service="minimalist">
+                                    <h4 data-en="Minimalist" data-hu="Minimalista">Minimalist</h4>
+                                    <p data-en="Simple, clean lines and designs for a subtle statement." 
+                                       data-hu="Egyszerű, tiszta vonalak és minták visszafogott megjelenéshez.">
+                                        Simple, clean lines and designs for a subtle statement.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="service-item" data-service="traditional">
-                            <h4 data-en="Traditional" data-hu="Tradicionális">Traditional</h4>
-                            <p data-en="Classic American and old-school designs with bold lines and vibrant colors." 
-                               data-hu="Klasszikus amerikai és old-school minták erős vonalakkal és élénk színekkel.">
-                                Classic American and old-school designs with bold lines and vibrant colors.
-                            </p>
-                        </div>
-                        <div class="service-item" data-service="japanese">
-                            <h4 data-en="Japanese Style" data-hu="Japán Stílus">Japanese Style</h4>
-                            <p data-en="Traditional and modern Japanese designs, from small pieces to full body suits." 
-                               data-hu="Tradicionális és modern japán minták, kis tetoválástól a teljes testtetoválásig.">
-                                Traditional and modern Japanese designs, from small pieces to full body suits.
-                            </p>
-                        </div>
-                        <div class="service-item" data-service="coverups">
-                            <h4 data-en="Cover-Ups" data-hu="Átfedések">Cover-Ups</h4>
-                            <p data-en="Transform or cover existing tattoos with new designs." 
-                               data-hu="Régi tetoválások átalakítása vagy elfedése új mintákkal.">
-                                Transform or cover existing tattoos with new designs.
-                            </p>
-                        </div>
-                        <div class="service-item" data-service="minimalist">
-                            <h4 data-en="Minimalist" data-hu="Minimalista">Minimalist</h4>
-                            <p data-en="Simple, clean lines and designs for a subtle statement." 
-                               data-hu="Egyszerű, tiszta vonalak és minták visszafogott megjelenéshez.">
-                                Simple, clean lines and designs for a subtle statement.
-                            </p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="service-category">
-                    <h3 data-en="Piercings" data-hu="Piercingek">Piercings</h3>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <h4 data-en="Ear Piercings" data-hu="Fül Piercingek">Ear Piercings</h4>
-                            <p data-en="Lobe, helix, industrial, tragus, daith, and more. Includes high-quality starter jewelry." 
-                               data-hu="Fülcimpa, helix, industrial, tragus, daith és még több. Tartalmazza a minőségi kezdő ékszert.">
-                                Lobe, helix, industrial, tragus, daith, and more. Includes high-quality starter jewelry.
-                            </p>
-                        </div>
-                        <div class="service-item">
-                            <h4 data-en="Facial Piercings" data-hu="Arc Piercingek">Facial Piercings</h4>
-                            <p data-en="Nose, septum, eyebrow, lip, and other facial piercings with professional care." 
-                               data-hu="Orr, septum, szemöldök, ajak és egyéb arc piercingek professzionális ellátással.">
-                                Nose, septum, eyebrow, lip, and other facial piercings with professional care.
-                            </p>
-                        </div>
-                        <div class="service-item">
-                            <h4 data-en="Body Piercings" data-hu="Test Piercingek">Body Piercings</h4>
-                            <p data-en="Navel, nipple, surface, and other body piercings performed with strict hygiene standards." 
-                               data-hu="Köldök, mellbimbó, felületi és egyéb test piercingek szigorú higiéniai előírások mellett.">
-                                Navel, nipple, surface, and other body piercings performed with strict hygiene standards.
-                            </p>
-                        </div>
-                        <div class="service-item">
-                            <h4 data-en="Jewelry Changes" data-hu="Ékszercsere">Jewelry Changes</h4>
-                            <p data-en="Professional jewelry changes and upgrades for existing piercings." 
-                               data-hu="Professzionális ékszercsere és fejlesztés meglévő piercingekhez.">
-                                Professional jewelry changes and upgrades for existing piercings.
-                            </p>
-                        </div>
-                        <div class="service-item">
-                            <h4 data-en="Custom Jewelry" data-hu="Egyedi Ékszerek">Custom Jewelry</h4>
-                            <p data-en="High-end and custom jewelry options available for all piercing types." 
-                               data-hu="Prémium és egyedi ékszer opciók minden piercing típushoz.">
-                                High-end and custom jewelry options available for all piercing types.
-                            </p>
-                        </div>
-                        <div class="service-item">
-                            <h4 data-en="Piercing Consultations" data-hu="Piercing Konzultáció">Piercing Consultations</h4>
-                            <p data-en="Professional advice on piercing options and aftercare." 
-                               data-hu="Szakmai tanácsadás piercing lehetőségekről és utókezelésről.">
-                                Professional advice on piercing options and aftercare.
-                            </p>
+                        <div class="service-category">
+                            <h3 data-en="Piercings" data-hu="Piercingek">Piercings</h3>
+                            <div class="service-list">
+                                <div class="service-item">
+                                    <h4 data-en="Ear Piercings" data-hu="Fül Piercingek">Ear Piercings</h4>
+                                    <p data-en="Lobe, helix, industrial, tragus, daith, and more. Includes high-quality starter jewelry." 
+                                       data-hu="Fülcimpa, helix, industrial, tragus, daith és még több. Tartalmazza a minőségi kezdő ékszert.">
+                                        Lobe, helix, industrial, tragus, daith, and more. Includes high-quality starter jewelry.
+                                    </p>
+                                </div>
+                                <div class="service-item">
+                                    <h4 data-en="Facial Piercings" data-hu="Arc Piercingek">Facial Piercings</h4>
+                                    <p data-en="Nose, septum, eyebrow, lip, and other facial piercings with professional care." 
+                                       data-hu="Orr, septum, szemöldök, ajak és egyéb arc piercingek professzionális ellátással.">
+                                        Nose, septum, eyebrow, lip, and other facial piercings with professional care.
+                                    </p>
+                                </div>
+                                <div class="service-item">
+                                    <h4 data-en="Body Piercings" data-hu="Test Piercingek">Body Piercings</h4>
+                                    <p data-en="Navel, nipple, surface, and other body piercings performed with strict hygiene standards." 
+                                       data-hu="Köldök, mellbimbó, felületi és egyéb test piercingek szigorú higiéniai előírások mellett.">
+                                        Navel, nipple, surface, and other body piercings performed with strict hygiene standards.
+                                    </p>
+                                </div>
+                                <div class="service-item">
+                                    <h4 data-en="Jewelry Changes" data-hu="Ékszercsere">Jewelry Changes</h4>
+                                    <p data-en="Professional jewelry changes and upgrades for existing piercings." 
+                                       data-hu="Professzionális ékszercsere és fejlesztés meglévő piercingekhez.">
+                                        Professional jewelry changes and upgrades for existing piercings.
+                                    </p>
+                                </div>
+                                <div class="service-item">
+                                    <h4 data-en="Custom Jewelry" data-hu="Egyedi Ékszerek">Custom Jewelry</h4>
+                                    <p data-en="High-end and custom jewelry options available for all piercing types." 
+                                       data-hu="Prémium és egyedi ékszer opciók minden piercing típushoz.">
+                                        High-end and custom jewelry options available for all piercing types.
+                                    </p>
+                                </div>
+                                <div class="service-item">
+                                    <h4 data-en="Piercing Consultations" data-hu="Piercing Konzultáció">Piercing Consultations</h4>
+                                    <p data-en="Professional advice on piercing options and aftercare." 
+                                       data-hu="Szakmai tanácsadás piercing lehetőségekről és utókezelésről.">
+                                        Professional advice on piercing options and aftercare.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -656,24 +712,18 @@
                     <img src="images/stika.jpg" alt="Stika" class="artist-image">
                     <div class="artist-info">
                         <h3>Stika</h3>
-                        <p>Specializes in Traditional and Neo-Traditional</p>
-                        <p>10 years of experience</p>
                     </div>
                 </div>
                 <div class="artist-card" data-artist="nozi">
                     <img src="images/nozi.JPG" alt="Nózi" class="artist-image">
                     <div class="artist-info">
                         <h3>Nózi</h3>
-                        <p>Specializes in Realism and Portraits</p>
-                        <p>8 years of experience</p>
                     </div>
                 </div>
                 <div class="artist-card" data-artist="mark">
                     <img src="images/pc.JPG" alt="Márk" class="artist-image">
                     <div class="artist-info">
                         <h3>Márk</h3>
-                        <p>Specializes in Japanese and Asian styles</p>
-                        <p>12 years of experience</p>
                     </div>
                 </div>
             </div>
@@ -975,6 +1025,24 @@
     </div>
 
     <script>
+        // Add this at the beginning of your script section
+        // Services dropdown functionality
+        const servicesDropdownBtn = document.querySelector('.services-dropdown-btn');
+        const servicesDropdownContent = document.querySelector('.services-dropdown-content');
+
+        servicesDropdownBtn.addEventListener('click', () => {
+            servicesDropdownContent.classList.toggle('show');
+        });
+
+        // Close the dropdown when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!e.target.matches('.services-dropdown-btn')) {
+                if (servicesDropdownContent.classList.contains('show')) {
+                    servicesDropdownContent.classList.remove('show');
+                }
+            }
+        });
+
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1013,7 +1081,7 @@
                     // Success message after both emails are sent
                     alert(currentLang === 'en' 
                         ? 'Your booking request has been sent successfully! We will contact you soon.'
-                        : 'Foglalási kérelmét sikeresen elküldtük! Hamarosan kapcsolatba lépünk Önnel.');
+                        : 'Foglalási kérelem küldése sikeres volt! Hamarosan kapcsolatba lépünk Önnel.');
                     
                     // Reset form
                     document.getElementById('appointmentForm').reset();
