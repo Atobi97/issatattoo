@@ -1,18 +1,38 @@
 <!DOCTYPE html>
-<!-- Updated for GitHub Pages deployment - Version 2 -->
+<!-- 
+    Issa Tattoo Website
+    Built with HTML, CSS, and JavaScript
+    Features:
+    - Responsive design
+    - Multi-language support (English/Hungarian)
+    - EmailJS integration for booking system
+    - Artist portfolio galleries
+    - Service dropdown menus
+    - Cookie consent system
+-->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Issa Tattoo - Professional Tattoo Studio</title>
     <link rel="icon" type="image/png" href="images/logo.png">
+    
+    <!-- EmailJS Integration for Contact Form -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
             emailjs.init("R6uiue_uNrn608lFQ"); // EmailJS public key
         })();
     </script>
+
     <style>
+        /* 
+            Global Styles
+            - Reset default browser styles
+            - Set base font and colors
+            - Define common layout properties
+        */
         * {
             margin: 0;
             padding: 0;
@@ -25,6 +45,12 @@
             color: #ffffff;
         }
 
+        /* 
+            Header Styles
+            - Logo and navigation
+            - Fixed position for easy access
+            - Responsive design for mobile
+        */
         header {
             background-color: #000000;
             padding: 20px;
@@ -45,6 +71,12 @@
             width: auto;
         }
 
+        /* 
+            Navigation Styles
+            - Horizontal menu
+            - Hover effects
+            - Responsive design
+        */
         nav {
             padding: 15px;
         }
@@ -56,6 +88,12 @@
             font-size: 1.1em;
         }
 
+        /* 
+            Hero Section
+            - Full-width background image
+            - Centered content
+            - Call-to-action button
+        */
         .hero {
             height: 500px;
             background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/issawebsitebackground.png');
@@ -571,6 +609,12 @@
     </style>
 </head>
 <body>
+    <!-- 
+        Cookie Consent Banner
+        - Appears on first visit
+        - Stores user preference
+        - Multi-language support
+    -->
     <div class="cookie-banner" id="cookieBanner">
         <span data-en="We use cookies to remember your language preference." 
               data-hu="Cookie-kat használunk a nyelvi beállítások megjegyzéséhez.">
@@ -579,11 +623,23 @@
         <button onclick="acceptCookies()" data-en="Accept" data-hu="Elfogad">Accept</button>
     </div>
 
+    <!-- 
+        Language Switcher
+        - Toggle between English and Hungarian
+        - Persistent selection
+        - Visual feedback
+    -->
     <div class="language-switcher">
         <button class="language-btn active" data-lang="en">EN</button>
         <button class="language-btn" data-lang="hu">HU</button>
     </div>
 
+    <!-- 
+        Header Section
+        - Logo
+        - Navigation menu
+        - Responsive design
+    -->
     <header>
         <div class="logo">
             <img src="images/logo.png" alt="Issa Tattoo Logo">
@@ -598,6 +654,12 @@
         </nav>
     </header>
 
+    <!-- 
+        Hero Section
+        - Main banner
+        - Call-to-action
+        - Background image
+    -->
     <section class="hero">
         <div class="hero-content">
             <h1 data-en="Welcome to Issa Tattoo" data-hu="Üdvözöljük az Issa Tattoo-ban">Welcome to Issa Tattoo</h1>
@@ -607,6 +669,12 @@
     </section>
 
     <main class="main-content">
+        <!-- 
+            Services Section
+            - Dropdown menu
+            - Service categories
+            - Interactive elements
+        -->
         <section id="services">
             <h2 class="section-title" data-en="Our Services" data-hu="Szolgáltatásaink">Our Services</h2>
             <div class="services-dropdown">
@@ -706,6 +774,12 @@
             </div>
         </section>
 
+        <!-- 
+            Artists Section
+            - Artist cards
+            - Portfolio integration
+            - Image galleries
+        -->
         <section id="artists">
             <h2 class="section-title">Our Artists</h2>
             <div class="artists-grid">
@@ -829,6 +903,12 @@
             </div>
         </section>
 
+        <!-- 
+            Booking Section
+            - Contact form
+            - EmailJS integration
+            - Form validation
+        -->
         <section id="booking">
             <h2 class="section-title" data-en="Book an Appointment" data-hu="Időpontfoglalás">Book an Appointment</h2>
             <form class="booking-form" id="appointmentForm">
@@ -875,6 +955,12 @@
             </form>
         </section>
 
+        <!-- 
+            Contact Section
+            - Location information
+            - Social media links
+            - Google Maps integration
+        -->
         <section id="contact">
             <h2 class="section-title" data-en="Contact Us" data-hu="Kapcsolat">Contact Us</h2>
             <div class="contact-container" style="max-width: 800px; margin: 0 auto; padding: 20px;">
@@ -938,18 +1024,16 @@
         </section>
     </main>
 
+    <!-- 
+        Footer
+        - Copyright information
+        - Additional links
+        - Contact details
+    -->
     <footer>
-        <p data-en="© 2023 Issa Tattoo. All rights reserved." 
-           data-hu="© 2023 Issa Tattoo. Minden jog fenntartva.">
-            © 2023 Issa Tattoo. All rights reserved.
-        </p>
-        <p data-en="123 Ink Street, Tattoo City, TC 12345" 
-           data-hu="123 Ink utca, Tattoo Város, TC 12345">
-            123 Ink Street, Tattoo City, TC 12345
-        </p>
-        <p data-en="Phone: (555) 123-4567" 
-           data-hu="Telefon: (555) 123-4567">
-            Phone: (555) 123-4567
+        <p data-en="© 2025 Issa Tattoo. All rights reserved." 
+           data-hu="© 2025 Issa Tattoo. Minden jog fenntartva.">
+            © 2025 Issa Tattoo. All rights reserved.
         </p>
     </footer>
 
@@ -1026,24 +1110,60 @@
     </div>
 
     <script>
-        // Add this at the beginning of your script section
-        // Services dropdown functionality
-        const servicesDropdownBtn = document.querySelector('.services-dropdown-btn');
-        const servicesDropdownContent = document.querySelector('.services-dropdown-content');
+        // 
+        // Language Switching System
+        // - Cookie-based language preference
+        // - Dynamic content updates
+        // - Persistent selection
+        //
+        let currentLang = getCookie('selectedLanguage') || 'en';
 
-        servicesDropdownBtn.addEventListener('click', () => {
-            servicesDropdownContent.classList.toggle('show');
-        });
+        function switchLanguage(lang) {
+            currentLang = lang;
+            setCookie('selectedLanguage', lang, 365);
+            
+            document.querySelectorAll('[data-en]').forEach(element => {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            });
 
-        // Close the dropdown when clicking outside
-        window.addEventListener('click', (e) => {
-            if (!e.target.matches('.services-dropdown-btn')) {
-                if (servicesDropdownContent.classList.contains('show')) {
-                    servicesDropdownContent.classList.remove('show');
-                }
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // 
+        // Cookie Management System
+        // - GDPR compliance
+        // - User preference storage
+        // - Banner management
+        //
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
             }
-        });
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
 
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // 
+        // Booking System
+        // - EmailJS integration
+        // - Form validation
+        // - Success/error handling
+        //
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1100,72 +1220,25 @@
                 });
         });
 
-        // Cookie handling functions
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
+        // 
+        // Services Dropdown System
+        // - Toggle functionality
+        // - Click outside handling
+        // - Smooth animations
+        //
+        const servicesDropdownBtn = document.querySelector('.services-dropdown-btn');
+        const servicesDropdownContent = document.querySelector('.services-dropdown-content');
 
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for(let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        function acceptCookies() {
-            setCookie('cookieConsent', 'accepted', 365);
-            document.getElementById('cookieBanner').classList.remove('show');
-        }
-
-        // Check if user has accepted cookies
-        if (!getCookie('cookieConsent')) {
-            document.getElementById('cookieBanner').classList.add('show');
-        }
-
-        // Language switching functionality
-        let currentLang = getCookie('selectedLanguage') || 'en';
-
-        function switchLanguage(lang) {
-            currentLang = lang;
-            setCookie('selectedLanguage', lang, 365);
-            
-            document.querySelectorAll('[data-en]').forEach(element => {
-                element.textContent = element.getAttribute(`data-${lang}`);
-            });
-
-            // Update active state of language buttons
-            document.querySelectorAll('.language-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-            });
-        }
-
-        // Add click handlers to language buttons
-        document.querySelectorAll('.language-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const lang = btn.getAttribute('data-lang');
-                switchLanguage(lang);
-            });
+        servicesDropdownBtn.addEventListener('click', () => {
+            servicesDropdownContent.classList.toggle('show');
         });
 
-        // Initialize the page with the stored language
-        switchLanguage(currentLang);
-
-        // Existing artist portfolio code
-        const artistCards = document.querySelectorAll('.artist-card');
-        const artistsGrid = document.querySelector('.artists-grid');
-        const backButton = document.querySelector('.back-to-artists');
-        const portfolios = document.querySelectorAll('.artist-portfolio');
-
+        // 
+        // Artist Portfolio System
+        // - Gallery management
+        // - Image loading
+        // - Navigation controls
+        //
         function showPortfolio(artistId) {
             // Hide all portfolios first
             portfolios.forEach(portfolio => {
@@ -1235,6 +1308,17 @@
                     document.body.style.overflow = '';
                 }
             });
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial language
+            switchLanguage(currentLang);
+            
+            // Show cookie banner if needed
+            if (!getCookie('cookieConsent')) {
+                document.getElementById('cookieBanner').classList.add('show');
+            }
         });
     </script>
 </body>
