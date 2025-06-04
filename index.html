@@ -1131,6 +1131,14 @@
             });
         }
 
+        // Add click handlers to language buttons
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                switchLanguage(lang);
+            });
+        });
+
         // 
         // Cookie Management System
         // - GDPR compliance
@@ -1158,80 +1166,10 @@
             return null;
         }
 
-        // 
-        // Booking System
-        // - EmailJS integration
-        // - Form validation
-        // - Success/error handling
-        //
-        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading state
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.innerHTML;
-            submitButton.innerHTML = currentLang === 'en' ? 'Sending...' : 'Küldés...';
-            submitButton.disabled = true;
-
-            // Get form data
-            const formData = {
-                from_name: document.getElementById('name').value,
-                from_email: document.getElementById('email').value,
-                reply_to: document.getElementById('email').value,
-                email: document.getElementById('email').value,
-                to_name: document.getElementById('name').value,
-                to_email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                service: document.getElementById('service').value,
-                artist: document.getElementById('artist').value,
-                date: document.getElementById('date').value,
-                message: document.getElementById('description').value
-            };
-
-            // Send confirmation email to guest
-            emailjs.send('service_pu4lycm', 'template_uz204d6', formData)
-                .then(function() {
-                    // After guest confirmation is sent, send notification to salon
-                    const salonData = {
-                        ...formData,
-                        to_email: 'issatattoosalon@gmail.com'  // Override to_email for salon notification
-                    };
-                    return emailjs.send('service_pu4lycm', 'template_0n460rc', salonData);  // Salon notification template
-                })
-                .then(function() {
-                    // Success message after both emails are sent
-                    alert(currentLang === 'en' 
-                        ? 'Your booking request has been sent successfully! We will contact you soon.'
-                        : 'Foglalási kérelem küldése sikeres volt! Hamarosan kapcsolatba lépünk Önnel.');
-                    
-                    // Reset form
-                    document.getElementById('appointmentForm').reset();
-                })
-                .catch(function(error) {
-                    console.error('EmailJS Error:', error);
-                    alert(currentLang === 'en'
-                        ? 'Sorry, there was an error sending your booking request. Please try again or contact us directly.'
-                        : 'Sajnáljuk, hiba történt a foglalási kérelem küldése közben. Kérjük, próbálja újra vagy lépjen kapcsolatba velünk közvetlenül.');
-                })
-                .finally(function() {
-                    // Restore button state
-                    submitButton.innerHTML = originalButtonText;
-                    submitButton.disabled = false;
-                });
-        });
-
-        // 
-        // Services Dropdown System
-        // - Toggle functionality
-        // - Click outside handling
-        // - Smooth animations
-        //
-        const servicesDropdownBtn = document.querySelector('.services-dropdown-btn');
-        const servicesDropdownContent = document.querySelector('.services-dropdown-content');
-
-        servicesDropdownBtn.addEventListener('click', () => {
-            servicesDropdownContent.classList.toggle('show');
-        });
+        function acceptCookies() {
+            setCookie('cookieConsent', 'accepted', 365);
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
 
         // 
         // Artist Portfolio System
@@ -1239,6 +1177,11 @@
         // - Image loading
         // - Navigation controls
         //
+        const artistCards = document.querySelectorAll('.artist-card');
+        const artistsGrid = document.querySelector('.artists-grid');
+        const backButton = document.querySelector('.back-to-artists');
+        const portfolios = document.querySelectorAll('.artist-portfolio');
+
         function showPortfolio(artistId) {
             // Hide all portfolios first
             portfolios.forEach(portfolio => {
@@ -1268,46 +1211,37 @@
             backButton.style.display = 'none';
         }
 
+        // Add click event listeners to artist cards
         artistCards.forEach(card => {
             card.addEventListener('click', () => {
                 const artistId = card.getAttribute('data-artist');
-                console.log('Clicked artist:', artistId); // Debug log
                 showPortfolio(artistId);
             });
         });
 
+        // Add click event listener to back button
         backButton.addEventListener('click', showAllArtists);
 
-        // Service modal functionality
-        document.querySelectorAll('.service-item').forEach(item => {
-            item.style.cursor = 'pointer';
-            item.addEventListener('click', () => {
-                const serviceType = item.getAttribute('data-service');
-                const modalId = `${serviceType}-modal`;
-                const modal = document.getElementById(modalId);
-                if (modal) {
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            });
+        // 
+        // Services Dropdown System
+        // - Toggle functionality
+        // - Click outside handling
+        // - Smooth animations
+        //
+        const servicesDropdownBtn = document.querySelector('.services-dropdown-btn');
+        const servicesDropdownContent = document.querySelector('.services-dropdown-content');
+
+        servicesDropdownBtn.addEventListener('click', () => {
+            servicesDropdownContent.classList.toggle('show');
         });
 
-        document.querySelectorAll('.close-modal').forEach(button => {
-            button.addEventListener('click', () => {
-                const modal = button.closest('.service-modal');
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Close modal when clicking outside content
-        document.querySelectorAll('.service-modal').forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = '';
+        // Close dropdown when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!e.target.matches('.services-dropdown-btn')) {
+                if (servicesDropdownContent.classList.contains('show')) {
+                    servicesDropdownContent.classList.remove('show');
                 }
-            });
+            }
         });
 
         // Initialize the page
