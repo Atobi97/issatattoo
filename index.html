@@ -1257,8 +1257,10 @@
             // Initialize booking form
             const appointmentForm = document.getElementById('appointmentForm');
             if (appointmentForm) {
+                console.log('Booking form found and initialized');
                 appointmentForm.addEventListener('submit', function(e) {
                     e.preventDefault();
+                    console.log('Form submission started');
                     
                     // Get form data
                     const formData = {
@@ -1271,16 +1273,28 @@
                         description: document.getElementById('description').value
                     };
 
+                    console.log('Form data collected:', formData);
+
+                    // Validate form data
+                    if (!formData.name || !formData.email || !formData.phone || !formData.service || !formData.artist || !formData.date || !formData.description) {
+                        alert(currentLang === 'en' ? 'Please fill in all fields' : 'Kérjük, töltse ki az összes mezőt');
+                        return;
+                    }
+
                     // Send email using EmailJS
+                    console.log('Attempting to send email via EmailJS');
                     emailjs.send('service_pu4lycm', 'template_uz204d6', formData)
                         .then(function(response) {
+                            console.log('EmailJS response:', response);
                             alert(currentLang === 'en' ? 'Booking request sent successfully!' : 'A foglalási kérelem sikeresen elküldve!');
                             appointmentForm.reset();
                         }, function(error) {
+                            console.error('EmailJS error details:', error);
                             alert(currentLang === 'en' ? 'Error sending booking request. Please try again.' : 'Hiba történt a foglalási kérelem küldése közben. Kérjük, próbálja újra.');
-                            console.error('EmailJS error:', error);
                         });
                 });
+            } else {
+                console.error('Booking form not found in the document');
             }
         });
     </script>
